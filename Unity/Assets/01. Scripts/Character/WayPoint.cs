@@ -34,6 +34,10 @@ public class WayPoint : MonoBehaviour
         Character character = obj.GetComponent<Character>();
         character.setWaypointList(_wayPointList);
     }
+    public void setWaypointList(List<GameObject> wayPointList)
+    {
+        _wayPointList = wayPointList;
+    }
 
     // Update is called once per frame
     void Update()

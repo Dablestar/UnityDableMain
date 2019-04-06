@@ -31,7 +31,7 @@ public class CharacterGenerator : MonoBehaviour
         obj.transform.localScale = Vector3.one;
 
         Character character = obj.GetComponent<Character>();
-        character.SetWaypointList(_wayPointList);
+        character.setWaypointList(_wayPointList);
     }
 
 

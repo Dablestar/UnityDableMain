@@ -6,6 +6,7 @@ public class Character : MonoBehaviour
 {
     [SerializeField] AnimationController _animationController;
     [SerializeField] List<GameObject> _wayPointList;
+    [SerializeField] bool _isPlayer = false;
 
     void Awake()
     {
@@ -15,7 +16,14 @@ public class Character : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        _stateDic.Add(eState.IDLE, new IdleState());
+        if(true == _isPlayer)
+        {
+            _stateDic.Add(eState.IDLE, new PlayerIdleState());
+        }
+        else
+        {
+            _stateDic.Add(eState.IDLE, new IdleState());
+        }
         _stateDic.Add(eState.WAIT, new WaitState());
         _stateDic.Add(eState.KICK, new KickState());
         _stateDic.Add(eState.WALK, new WalkState());
@@ -36,10 +44,26 @@ public class Character : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        UpdateState();
-        UpdateMove();
         if (eState.DEATH != _stateType)
         {
+            if(true == _isPlayer)
+            {
+                if(true == Input.GetMouseButtonUp(0))
+                {
+                    Vector2 clickPos = Input.mousePosition;
+                    //화면 좌표와 대응되는 월드좌표 => Raycast 사용
+                    Ray ray = Camera.main.ScreenPointToRay(clickPos);
+                    RaycastHit hitInfo;
+                   if(true == Physics.Raycast(ray, out hitInfo, 100.0f, 1 << LayerMask.NameToLayer("Ground")))
+                    {
+                        Vector3 destPos = hitInfo.point;
+                        SetDestination(destPos);
+                        ChangeState(Character.eState.WALK);
+                    }
+                }
+            }
+            UpdateState();
+            UpdateMove();
             UpdateDeath();
         }
 

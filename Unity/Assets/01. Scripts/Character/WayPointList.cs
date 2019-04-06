@@ -9,7 +9,7 @@ public class WayPointList : MonoBehaviour
     {
        int wayPointCount =  transform.childCount;
         List<GameObject> wayPointList = new List<GameObject>();
-        for(int i = 0; i<wayPointCount; i++)
+        for (int i = 0; i<wayPointCount; i++)
         {
             GameObject wayPointObject = transform.GetChild(i).gameObject;
             wayPointList.Add(wayPointObject);
@@ -19,7 +19,7 @@ public class WayPointList : MonoBehaviour
         {
             GameObject wayPointObject = transform.GetChild(i).gameObject;
             WayPoint wayPointScript = wayPointObject.GetComponent<WayPoint>();
-            wayPointScript.setWayPointList(wayPointList);
+            wayPointScript.setWaypointList(wayPointList);
             
         }
     }
