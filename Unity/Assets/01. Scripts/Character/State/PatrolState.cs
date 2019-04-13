@@ -5,15 +5,16 @@ using UnityEngine;
 public class PatrolState : State
 {
     Vector3 _prevWayPoint = Vector3.zero;
+
     override public void Start()
     {
         _prevWayPoint = _character.transform.position;
         _prevWayPoint.y = 0.0f;
         Vector3 wayPoint = _character.GetRandomWayPoint();
+
         if (wayPoint.Equals(_prevWayPoint))
         {
             _character.ChangeState(Character.eState.WAIT);
-
         }
         else
         {

@@ -1,0 +1,25 @@
+isPlayer = 조작
+isNPC = AI가 움직임
+if~else문 : 짜기는 쉽지만 유지보수가 어렵다.
+RuntimeAnimatorController
+스크립트 내 로드 방법 = Resources.Load(string path);
+중복되는 코드와 조건문, 패턴이 많을수록 유지보수가 어려워진다.
+->조건에 따라 다르게 작동
+->객체지향의 3대 요소(캡슐화, 상속★, 다형성)
+->
+
+상속 예시
+2발캐릭터, 3발캐릭터, 4발캐릭터 각각 다른 스크립트를 상속받음.
+
+★다형성 예시(현재 트렌드)
+각기 다른 부품을 가지고 있으며, 어떤 부품을 끼워주느냐에 따라서 캐릭터의 기능이 바뀜
+단, 이경우 상속이 필요함.
+
+NPCModule is a CharacterModule
+PlayerModule is a CharacterModule
+
+protected: 상속받는 객체들만 부모객체의 함수를 사용할수 있도록 한다.
+virtual: 상속받는 객체에 기능이 있을경우, 그 기능을 따라간다.(가상함수)
+override: 부모객체를 따라가지 않는다.
+
+Refactoring(리팩토링) -> 조건문, 반복되는 코드 등을 제거하여 코드를 간결화/개선 시키는것

@@ -10,7 +10,6 @@ public class CharacterGenerator : MonoBehaviour
     // Use this for initialization
     void Start ()
     {
-        //Generate();
         StartCoroutine(ExecGenerate());
     }
 
@@ -26,17 +25,17 @@ public class CharacterGenerator : MonoBehaviour
     void Generate()
     {
         GameObject obj = GameObject.Instantiate<GameObject>(_characterPrefab);
-        obj.transform.position = Vector3.zero;
+        obj.transform.position = transform.position;
         obj.transform.rotation = Quaternion.identity;
         obj.transform.localScale = Vector3.one;
 
         Character character = obj.GetComponent<Character>();
-        character.setWaypointList(_wayPointList);
+        character.SetWaypointList(_wayPointList);
     }
 
 
     // Update is called once per frame
-    void Update () {
-		
+    void Update ()
+    {
 	}
 }

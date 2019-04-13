@@ -32,7 +32,7 @@ public class WayPoint : MonoBehaviour
         obj.transform.localScale = Vector3.one;
 
         Character character = obj.GetComponent<Character>();
-        character.setWaypointList(_wayPointList);
+        character.SetWaypointList(_wayPointList);
     }
     public void setWaypointList(List<GameObject> wayPointList)
     {
